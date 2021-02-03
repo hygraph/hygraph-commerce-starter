@@ -1,13 +1,9 @@
 import getAllProducts from '@/lib/get-all-products'
 import getNavigation from '@/lib/get-navigation'
-import ProductCard from '@/components/product-card'
+import ProductGrid from '@/components/product-grid'
 
 function IndexPage({ products }) {
-  return (
-    <div className="gap-8 grid sm:grid-cols-2 md:grid-cols-3">
-      {products.map(ProductCard)}
-    </div>
-  )
+  return <ProductGrid products={products} />
 }
 
 export async function getStaticProps({ locale }) {

@@ -12,7 +12,7 @@ function Layout({ children, navigation = [] }) {
   const activeLocale = locales.find((locale) => locale.value === router.locale)
 
   const setLocale = (event) =>
-    router.push(router.asPath, router.asPath, { locale: event.target.value })
+    router.push('/', '/', { locale: event.target.value })
 
   return (
     <React.Fragment>

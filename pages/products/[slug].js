@@ -1,9 +1,10 @@
 import getAllProducts from '@/lib/get-all-products'
 import getProductBySlug from '@/lib/get-product-slug'
 import getNavigation from '@/lib/get-navigation'
+import ProductPageUI from '@/components/product-page-ui'
 
 function ProductPage({ product }) {
-  return <pre>{JSON.stringify(product, null, 2)}</pre>
+  return <ProductPageUI product={product} />
 }
 
 export async function getStaticPaths({ locales }) {

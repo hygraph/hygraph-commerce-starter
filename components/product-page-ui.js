@@ -50,38 +50,40 @@ function ProductPageUI({ product }) {
           <p className="leading-loose text-lightgray">{product.description}</p>
         </div>
         <div className="md:flex md:flex-wrap -mx-3">
-          <div className="md:w-3/4 px-3 mb-6">
-            <label
-              className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"
-              htmlFor="style"
-            >
-              Style
-            </label>
-            <div className="relative">
-              <select
-                id="style"
-                name="style"
-                value={activeVariantId}
-                className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
-                onChange={updateVariant}
+          {product.variants.length > 1 ? (
+            <div className="md:w-3/4 px-3 mb-6">
+              <label
+                className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"
+                htmlFor="style"
               >
-                {product.variants.map((variant) => (
-                  <option key={variant.id} value={variant.id}>
-                    {variant.name}
-                  </option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slategray">
-                <svg
-                  className="fill-current h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
+                Style
+              </label>
+              <div className="relative">
+                <select
+                  id="style"
+                  name="style"
+                  value={activeVariantId}
+                  className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
+                  onChange={updateVariant}
                 >
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
+                  {product.variants.map((variant) => (
+                    <option key={variant.id} value={variant.id}>
+                      {variant.name}
+                    </option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slategray">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
+          ) : null}
           <div className="md:w-1/4 px-3 mb-6">
             <label
               className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"

@@ -29,7 +29,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ locale, params }) {
-  const navigation = await getNavigation({ locale })
+  const { navigation } = await getNavigation({ locale })
   const { category } = await getCategoryBySlug({
     locale,
     slug: params.slug

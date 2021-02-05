@@ -11,7 +11,7 @@ function Layout({ children, navigation }) {
 
   const activeLocale = locales.find((locale) => locale.value === router.locale)
 
-  const setLocale = (event) =>
+  const updateLocale = (event) =>
     router.push('/', '/', { locale: event.target.value })
 
   return (
@@ -52,7 +52,7 @@ function Layout({ children, navigation }) {
                       name="language"
                       value={activeLocale.value}
                       className="block appearance-none bg-white border-none px-4 py-0 pr-8 focus:outline-none focus:bg-white text-lightgray focus:text-slategray rounded-lg"
-                      onChange={setLocale}
+                      onChange={updateLocale}
                     >
                       {locales.map((locale) => (
                         <option key={locale.value} value={locale.value}>

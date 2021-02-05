@@ -6,6 +6,7 @@
       "@/icons": ["components/icons"],
       "@/lib/*": ["lib/*"],
       "@/svgs": ["components/svgs"],
+      "@/utils/*": ["utils/*"]
     }
   }
 }

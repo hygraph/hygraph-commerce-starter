@@ -24,9 +24,9 @@ function Layout({ children, navigation }) {
                 <GraphCMSSVG className="h-auto text-primary w-5" />
               </a>
             </Link>
-            {navigation.pages.length ? (
+            {navigation?.pages.length ? (
               <ul className="hidden md:mx-auto md:block md:flex-grow">
-                {navigation.pages.map((page) => (
+                {navigation?.pages.map((page) => (
                   <li
                     key={page.id}
                     className="block my-4 md:inline-block md:my-0"

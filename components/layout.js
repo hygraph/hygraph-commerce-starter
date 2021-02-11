@@ -6,12 +6,12 @@ import { ChevronDownIcon } from '@/icons'
 import { GraphCMSSVG } from '@/svgs'
 import { locales } from 'graphcms.config'
 
-function Layout({ children, navigation = [] }) {
+function Layout({ children, navigation }) {
   const router = useRouter()
 
   const activeLocale = locales.find((locale) => locale.value === router.locale)
 
-  const setLocale = (event) =>
+  const updateLocale = (event) =>
     router.push('/', '/', { locale: event.target.value })
 
   return (
@@ -24,20 +24,22 @@ function Layout({ children, navigation = [] }) {
                 <GraphCMSSVG className="h-auto text-primary w-5" />
               </a>
             </Link>
-            <ul className="hidden md:mx-auto md:block md:flex-grow">
-              {navigation.map((page) => (
-                <li
-                  key={page.id}
-                  className="block my-4 md:inline-block md:my-0"
-                >
-                  <Link href={`/${page.type.toLowerCase()}/${page.slug}`}>
-                    <a className="text-lightgray hover:text-slategray hover:bg-gainsboro rounded-full py-2 px-3 font-medium">
-                      {page.name}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {navigation?.pages.length ? (
+              <ul className="hidden md:mx-auto md:block md:flex-grow">
+                {navigation?.pages.map((page) => (
+                  <li
+                    key={page.id}
+                    className="block my-4 md:inline-block md:my-0"
+                  >
+                    <Link href={`/${page.type.toLowerCase()}/${page.slug}`}>
+                      <a className="text-lightgray hover:text-slategray hover:bg-gainsboro rounded-full py-2 px-3 font-medium">
+                        {page.name}
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             <div className="flex items-center">
               <form className="sm:max-w-xs">
                 <fieldset className="w-full">
@@ -50,7 +52,7 @@ function Layout({ children, navigation = [] }) {
                       name="language"
                       value={activeLocale.value}
                       className="block appearance-none bg-white border-none px-4 py-0 pr-8 focus:outline-none focus:bg-white text-lightgray focus:text-slategray rounded-lg"
-                      onChange={setLocale}
+                      onChange={updateLocale}
                     >
                       {locales.map((locale) => (
                         <option key={locale.value} value={locale.value}>

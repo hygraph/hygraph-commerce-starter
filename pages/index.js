@@ -7,8 +7,8 @@ function IndexPage({ products }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const navigation = await getNavigation({ locale })
-  const products = await getAllProducts({ locale })
+  const { navigation } = await getNavigation({ locale })
+  const { products } = await getAllProducts({ locale })
 
   return {
     props: { navigation, products }

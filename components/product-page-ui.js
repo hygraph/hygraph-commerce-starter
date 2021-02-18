@@ -29,7 +29,23 @@ function ProductPageUI({ product }) {
   const [primaryImage] = product.images
 
   const addToCart = () => {
-    addItem({ ...activeVariant, ...product }, variantQuantity)
+    const itemMetadata = router.locales.reduce(
+      (acc, locale) => ({
+        ...acc,
+        [locale]: {
+          ...product.localizations.find(
+            (localization) => localization.locale === locale
+          ),
+          image: product.images[0]
+        }
+      }),
+      {}
+    )
+
+    addItem(
+      { id: activeVariantId, price: activeVariant.price, ...itemMetadata },
+      variantQuantity
+    )
   }
 
   return (

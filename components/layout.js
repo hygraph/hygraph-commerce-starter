@@ -11,8 +11,11 @@ function Layout({ children, navigation }) {
 
   const activeLocale = locales.find((locale) => locale.value === router.locale)
 
-  const updateLocale = (event) =>
-    router.push('/', '/', { locale: event.target.value })
+  const updateLocale = (event) => {
+    const path = ['/cart'].includes(router.asPath) ? router.asPath : '/'
+
+    router.push(path, path, { locale: event.target.value })
+  }
 
   return (
     <React.Fragment>

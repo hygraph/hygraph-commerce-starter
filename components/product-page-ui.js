@@ -35,15 +35,19 @@ function ProductPageUI({ product }) {
         [locale]: {
           ...product.localizations.find(
             (localization) => localization.locale === locale
-          ),
-          image: product.images[0]
+          )
         }
       }),
       {}
     )
 
     addItem(
-      { id: activeVariantId, price: activeVariant.price, ...itemMetadata },
+      {
+        id: activeVariantId,
+        image: product.images[0],
+        price: activeVariant.price,
+        ...itemMetadata
+      },
       variantQuantity
     )
   }

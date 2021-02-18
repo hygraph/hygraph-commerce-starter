@@ -29,9 +29,9 @@ function Cart() {
           <div className="flex items-center" key={item.id}>
             <div className="w-1/6">
               <Image
-                src={item[router.locale].image.url}
-                width={item[router.locale].image.width}
-                height={item[router.locale].image.height}
+                src={item.image.url}
+                width={item.image.width}
+                height={item.image.height}
               />
             </div>
             <div>

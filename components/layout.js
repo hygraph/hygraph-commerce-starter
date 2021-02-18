@@ -69,6 +69,9 @@ function Layout({ children, navigation }) {
                   </div>
                 </fieldset>
               </form>
+              <Link href="/cart">
+                <a>Cart</a>
+              </Link>
             </div>
           </nav>
         </div>

@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import { useCart } from 'react-use-cart'
 
 import { ChevronDownIcon } from '@/icons'
 
 function ProductPageUI({ product }) {
+  const { addItem } = useCart()
   const router = useRouter()
   const [variantQuantity, setVariantQuantity] = React.useState(1)
   const [activeVariantId, setActiveVariantId] = React.useState(
@@ -25,6 +27,10 @@ function ProductPageUI({ product }) {
   const updateVariant = (event) => setActiveVariantId(event.target.value)
 
   const [primaryImage] = product.images
+
+  const addToCart = () => {
+    addItem({ ...activeVariant, ...product }, variantQuantity)
+  }
 
   return (
     <div className="lg:flex -mx-6">
@@ -116,6 +122,7 @@ function ProductPageUI({ product }) {
               </div>
             </div>
           </div>
+          <button onClick={addToCart}>Add to cart</button>
         </div>
       </div>
     </div>

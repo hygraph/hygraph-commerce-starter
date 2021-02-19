@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useCart } from 'react-use-cart'
 
 function Cart() {
@@ -10,6 +11,7 @@ function Cart() {
     removeItem,
     updateItemQuantity
   } = useCart()
+  const router = useRouter()
 
   const decrementItemQuantity = (item) =>
     updateItemQuantity(item.id, item.quantity - 1)
@@ -27,14 +29,14 @@ function Cart() {
           <div className="flex items-center" key={item.id}>
             <div className="w-1/6">
               <Image
-                src={item.images[0].url}
-                width={item.images[0].width}
-                height={item.images[0].height}
+                src={item.image.url}
+                width={item.image.width}
+                height={item.image.height}
               />
             </div>
             <div>
-              <Link href={`/products/${item.slug}`}>
-                <a>{item.name}</a>
+              <Link href={`/products/${item[router.locale].slug}`}>
+                <a>{item[router.locale].name}</a>
               </Link>
             </div>
             <div className="flex items-center space-x-2">

@@ -70,9 +70,11 @@ function ProductPageUI({ product }) {
           {product.name}
         </h1>
         <div className="mb-6">
-          <p className="font-semibold text-2xl text-slategray">
-            {activeVariant && activeVariant.formattedPrice}
-          </p>
+          {product.formattedPrice ? (
+            <p className="font-semibold text-2xl text-slategray">
+              {product.formattedPrice}
+            </p>
+          ) : null}
         </div>
         <div className="mb-6">
           <p className="leading-loose text-lightgray">{product.description}</p>

@@ -9,12 +9,9 @@ export const parseProduct = ({ locale, product }) => {
 
   return {
     ...product,
-    variants: product.variants.map((variant) => ({
-      ...variant,
-      formattedPrice: formatPriceInt({
-        locale: activeLocale,
-        price: variant.price
-      })
-    }))
+    formattedPrice: formatPriceInt({
+      locale: activeLocale,
+      price: product.price
+    })
   }
 }

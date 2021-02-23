@@ -4,9 +4,12 @@ import Image from 'next/image'
 import { useCart } from 'react-use-cart'
 
 import { ChevronDownIcon } from '@/icons'
+import { formatPriceInt } from '@/utils/format-price-int'
+import { useCurrencyContext } from './context/currency'
 
 function ProductPageUI({ product }) {
   const { addItem } = useCart()
+  const { activeCurrency } = useCurrencyContext()
   const router = useRouter()
   const [variantQuantity, setVariantQuantity] = React.useState(1)
   const [activeVariantId, setActiveVariantId] = React.useState(
@@ -70,11 +73,9 @@ function ProductPageUI({ product }) {
           {product.name}
         </h1>
         <div className="mb-6">
-          {product.formattedPrice ? (
-            <p className="font-semibold text-2xl text-slategray">
-              {product.formattedPrice}
-            </p>
-          ) : null}
+          <p className="font-semibold text-2xl text-slategray">
+            {formatPriceInt({ currency: activeCurrency, price: product.price })}
+          </p>
         </div>
         <div className="mb-6">
           <p className="leading-loose text-lightgray">{product.description}</p>

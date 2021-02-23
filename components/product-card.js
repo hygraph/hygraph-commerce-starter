@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-function ProductCard({ id, images, name, slug, variants }) {
+function ProductCard({ id, formattedPrice, images, name, slug }) {
   const [primaryImage] = images
-  const [primaryVariant] = variants
 
   return (
     <article key={id}>
@@ -24,10 +23,8 @@ function ProductCard({ id, images, name, slug, variants }) {
               <p className="text-gray-800 font-semibold text-lg group-hover:text-indigo-600 mb-1">
                 {name}
               </p>
-              {primaryVariant ? (
-                <p className="text-gray-400 text-sm">
-                  {primaryVariant.formattedPrice}
-                </p>
+              {formattedPrice ? (
+                <p className="text-gray-400 text-sm">{formattedPrice}</p>
               ) : null}
             </div>
           </div>

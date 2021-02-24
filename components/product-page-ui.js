@@ -47,6 +47,7 @@ function ProductPageUI({ product }) {
     addItem(
       {
         id: activeVariantId,
+        productId: product.id,
         image: product.images[0],
         price: product.price,
         ...itemMetadata

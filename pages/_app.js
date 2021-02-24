@@ -7,11 +7,7 @@ import Layout from '@/components/layout'
 
 function App({ Component, pageProps }) {
   return (
-    <CurrencyProvider
-      defaultCurrency={pageProps.navigation.currencies.find((currency) =>
-        Boolean(currency.default)
-      )}
-    >
+    <CurrencyProvider {...pageProps}>
       <CartProvider>
         <Layout {...pageProps}>
           <Component {...pageProps} />

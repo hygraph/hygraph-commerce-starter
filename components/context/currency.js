@@ -2,10 +2,16 @@ import * as React from 'react'
 
 const CurrencyContext = React.createContext()
 
-function CurrencyProvider({ children, defaultCurrency }) {
-  if (!defaultCurrency) throw new Error('A `defaultCurrency` must be provided')
+function CurrencyProvider({ children, navigation }) {
+  const defaultCurrency = navigation?.currencies?.find((currency) =>
+    Boolean(currency.default)
+  )
 
   const [activeCurrency, setActiveCurrency] = React.useState(defaultCurrency)
+
+  React.useEffect(() => {
+    setActiveCurrency(defaultCurrency)
+  }, [navigation])
 
   const switchCurrency = (currency) => setActiveCurrency(currency)
 

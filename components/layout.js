@@ -81,7 +81,7 @@ function Layout({ children, navigation }) {
                     </div>
                   </div>
                 </fieldset>
-                {navigation?.currencies.length ? (
+                {activeCurrency && navigation?.currencies?.length ? (
                   <fieldset className="w-full">
                     <label htmlFor="language" className="sr-only">
                       Language

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useCart } from 'react-use-cart'
 import { loadStripe } from '@stripe/stripe-js'
 
+import { formatPriceInt } from '@/utils/format-price-int'
 import getNavigation from '@/lib/get-navigation'
 import { useSettingsContext } from '@/context/settings'
 
@@ -82,11 +83,21 @@ function Cart() {
             <div>
               <button onClick={() => removeItem(item.id)}>Remove</button>
             </div>
-            <div>{item.itemTotal}</div>
+            <div>
+              {formatPriceInt({
+                currency: activeCurrency,
+                price: item.itemTotal
+              })}
+            </div>
           </div>
         )
       })}
-      <p className="text-xl">{cartTotal}</p>
+      <p className="text-xl">
+        {formatPriceInt({
+          currency: activeCurrency,
+          price: cartTotal
+        })}
+      </p>
       <button onClick={handleClick}>Checkout</button>
     </div>
   )

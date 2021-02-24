@@ -2,8 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCart } from 'react-use-cart'
+import { loadStripe } from '@stripe/stripe-js'
 
 import getNavigation from '@/lib/get-navigation'
+import { useSettingsContext } from '@/context/settings'
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 function Cart() {
   const {
@@ -14,12 +18,35 @@ function Cart() {
     updateItemQuantity
   } = useCart()
   const router = useRouter()
+  const { activeCurrency } = useSettingsContext()
 
   const decrementItemQuantity = (item) =>
     updateItemQuantity(item.id, item.quantity - 1)
 
   const incrementItemQuantity = (item) =>
     updateItemQuantity(item.id, item.quantity + 1)
+
+  const handleClick = async () => {
+    const stripe = await stripePromise
+
+    const { session } = await fetch('/api/stripe/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        cancel_url: window.location.origin,
+        currency: activeCurrency.code,
+        items,
+        locale: router.locale,
+        success_url: window.location.origin
+      })
+    }).then((res) => res.json())
+
+    await stripe.redirectToCheckout({
+      sessionId: session.id
+    })
+  }
 
   return (
     <div>
@@ -60,6 +87,7 @@ function Cart() {
         )
       })}
       <p className="text-xl">{cartTotal}</p>
+      <button onClick={handleClick}>Checkout</button>
     </div>
   )
 }

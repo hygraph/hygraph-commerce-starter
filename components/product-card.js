@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-function ProductCard({ id, formattedPrice, images, name, slug }) {
+import { formatPriceInt } from '@/utils/format-price-int'
+import { useCurrencyContext } from '@/context/currency'
+
+function ProductCard({ id, images, name, price, slug }) {
+  const { activeCurrency } = useCurrencyContext()
+
   const [primaryImage] = images
 
   return (
@@ -23,9 +28,12 @@ function ProductCard({ id, formattedPrice, images, name, slug }) {
               <p className="text-gray-800 font-semibold text-lg group-hover:text-indigo-600 mb-1">
                 {name}
               </p>
-              {formattedPrice ? (
-                <p className="text-gray-400 text-sm">{formattedPrice}</p>
-              ) : null}
+              <p className="text-gray-400 text-sm">
+                {formatPriceInt({
+                  currency: activeCurrency,
+                  price
+                })}
+              </p>
             </div>
           </div>
         </a>

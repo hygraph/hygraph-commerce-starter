@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCart } from 'react-use-cart'
 
+import getNavigation from '@/lib/get-navigation'
+
 function Cart() {
   const {
     cartTotal,
@@ -62,6 +64,16 @@ function Cart() {
       <p className="text-xl">{cartTotal}</p>
     </div>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  const { navigation } = await getNavigation({ locale })
+
+  return {
+    props: {
+      navigation
+    }
+  }
 }
 
 export default Cart

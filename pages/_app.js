@@ -2,18 +2,18 @@ import { CartProvider } from 'react-use-cart'
 
 import 'tailwindcss/tailwind.css'
 
-import { CurrencyProvider } from '@/context/currency'
+import { SettingsProvider } from '@/context/settings'
 import Layout from '@/components/layout'
 
 function App({ Component, pageProps }) {
   return (
-    <CurrencyProvider>
+    <SettingsProvider>
       <CartProvider>
         <Layout {...pageProps}>
           <Component {...pageProps} />
         </Layout>
       </CartProvider>
-    </CurrencyProvider>
+    </SettingsProvider>
   )
 }
 

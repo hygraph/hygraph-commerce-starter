@@ -3,7 +3,7 @@ import * as React from 'react'
 import { currencies } from 'graphcms.config'
 import useLocalStorage from '@/hooks/use-local-storage'
 
-const CurrencyContext = React.createContext()
+const SettingsContext = React.createContext()
 
 function reducer(state, action) {
   switch (action.type) {
@@ -14,22 +14,22 @@ function reducer(state, action) {
   }
 }
 
-function CurrencyProvider({ children }) {
-  const [savedCurrency, saveCurrency] = useLocalStorage(
+function SettingsProvider({ children }) {
+  const [savedSettings, saveSettings] = useLocalStorage(
     'graphcms-commerce-reference',
     {
       activeCurrency: currencies.find((currency) => Boolean(currency.default))
     }
   )
-  const [state, dispatch] = React.useReducer(reducer, savedCurrency)
+  const [state, dispatch] = React.useReducer(reducer, savedSettings)
   const [hasMounted, setHasMounted] = React.useState(false)
 
   const switchCurrency = (currency) =>
     dispatch({ type: 'SWITCH_CURRENCY', payload: currency })
 
   React.useEffect(() => {
-    saveCurrency(state)
-  }, [state, saveCurrency])
+    saveSettings(state)
+  }, [state, saveSettings])
 
   React.useEffect(() => {
     setHasMounted(true)
@@ -38,24 +38,24 @@ function CurrencyProvider({ children }) {
   if (!hasMounted) return null
 
   return (
-    <CurrencyContext.Provider
+    <SettingsContext.Provider
       value={{
         ...state,
         switchCurrency
       }}
     >
       {children}
-    </CurrencyContext.Provider>
+    </SettingsContext.Provider>
   )
 }
 
-export const useCurrencyContext = () => {
-  const context = React.useContext(CurrencyContext)
+const useSettingsContext = () => {
+  const context = React.useContext(SettingsContext)
 
   if (!context)
-    throw new Error('useCurrencyContext must be used within a CurrencyProvider')
+    throw new Error('useSettingsContext must be used within a SettingsProvider')
 
   return context
 }
 
-export { CurrencyProvider }
+export { SettingsProvider, useSettingsContext }

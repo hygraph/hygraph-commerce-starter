@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { formatPriceInt } from '@/utils/format-price-int'
-import { useCurrencyContext } from '@/context/currency'
+import { useSettingsContext } from '@/context/settings'
 
 function ProductCard({ id, images, name, price, slug }) {
-  const { activeCurrency } = useCurrencyContext()
+  const { activeCurrency } = useSettingsContext()
 
   const [primaryImage] = images
 

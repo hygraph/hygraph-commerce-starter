@@ -5,12 +5,12 @@ import { useCart } from 'react-use-cart'
 
 import { ChevronDownIcon } from '@/icons'
 import { formatPriceInt } from '@/utils/format-price-int'
-import { useCurrencyContext } from '@/context/currency'
+import { useSettingsContext } from '@/context/settings'
 
 function ProductPageUI({ product }) {
   const { addItem } = useCart()
-  const { activeCurrency } = useCurrencyContext()
   const router = useRouter()
+  const { activeCurrency } = useSettingsContext()
   const [variantQuantity, setVariantQuantity] = React.useState(1)
   const [activeVariantId, setActiveVariantId] = React.useState(
     router.query.variantId || product.variants[0].id

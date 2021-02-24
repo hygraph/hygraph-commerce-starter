@@ -5,10 +5,10 @@ import Link from 'next/link'
 import { ChevronDownIcon } from '@/icons'
 import { GraphCMSSVG } from '@/svgs'
 import { currencies, locales } from 'graphcms.config'
-import { useCurrencyContext } from '@/context/currency'
+import { useSettingsContext } from '@/context/settings'
 
 function Layout({ children, navigation }) {
-  const { activeCurrency, switchCurrency } = useCurrencyContext()
+  const { activeCurrency, switchCurrency } = useSettingsContext()
   const router = useRouter()
 
   const activeLocale = locales.find((locale) => locale.value === router.locale)

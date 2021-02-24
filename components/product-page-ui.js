@@ -5,7 +5,7 @@ import { useCart } from 'react-use-cart'
 
 import { ChevronDownIcon } from '@/icons'
 import { formatPriceInt } from '@/utils/format-price-int'
-import { useCurrencyContext } from './context/currency'
+import { useCurrencyContext } from '@/context/currency'
 
 function ProductPageUI({ product }) {
   const { addItem } = useCart()

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ChevronDownIcon } from '@/icons'
 import { GraphCMSSVG } from '@/svgs'
 import { locales } from 'graphcms.config'
-import { useCurrencyContext } from './context/currency'
+import { useCurrencyContext } from '@/context/currency'
 
 function Layout({ children, navigation }) {
   const { activeCurrency, switchCurrency } = useCurrencyContext()

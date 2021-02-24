@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
       "@/icons": ["components/icons"],
       "@/lib/*": ["lib/*"],
       "@/svgs": ["components/svgs"],

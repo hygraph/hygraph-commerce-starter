@@ -83,13 +83,13 @@ function Layout({ children, navigation }) {
                 </fieldset>
                 {activeCurrency && navigation?.currencies?.length ? (
                   <fieldset className="w-full">
-                    <label htmlFor="language" className="sr-only">
-                      Language
+                    <label htmlFor="currency" className="sr-only">
+                      Currency
                     </label>
                     <div className="relative">
                       <select
-                        id="language"
-                        name="language"
+                        id="currency"
+                        name="currency"
                         value={activeCurrency.code}
                         className="block appearance-none bg-white border-none px-4 py-0 pr-8 focus:outline-none focus:bg-white text-lightgray focus:text-slategray rounded-lg"
                         onChange={updateCurrency}

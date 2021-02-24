@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { ChevronDownIcon } from '@/icons'
 import { GraphCMSSVG } from '@/svgs'
-import { locales } from 'graphcms.config'
+import { currencies, locales } from 'graphcms.config'
 import { useCurrencyContext } from '@/context/currency'
 
 function Layout({ children, navigation }) {
@@ -20,7 +20,7 @@ function Layout({ children, navigation }) {
   }
 
   const updateCurrency = (event) => {
-    const currency = navigation.currencies.find(
+    const currency = currencies.find(
       (currency) => currency.code === event.target.value
     )
 
@@ -81,34 +81,32 @@ function Layout({ children, navigation }) {
                     </div>
                   </div>
                 </fieldset>
-                {activeCurrency && navigation?.currencies?.length ? (
-                  <fieldset className="w-full">
-                    <label htmlFor="currency" className="sr-only">
-                      Currency
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="currency"
-                        name="currency"
-                        value={activeCurrency.code}
-                        className="block appearance-none bg-white border-none px-4 py-0 pr-8 focus:outline-none focus:bg-white text-lightgray focus:text-slategray rounded-lg"
-                        onChange={updateCurrency}
-                      >
-                        {navigation.currencies.map((currency) => (
-                          <option key={currency.id} value={currency.code}>
-                            {currency.code}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                        <ChevronDownIcon
-                          className="h-4 w-4 text-gray-400"
-                          aria-hidden="true"
-                        />
-                      </div>
+                <fieldset className="w-full">
+                  <label htmlFor="currency" className="sr-only">
+                    Currency
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="currency"
+                      name="currency"
+                      value={activeCurrency.code}
+                      className="block appearance-none bg-white border-none px-4 py-0 pr-8 focus:outline-none focus:bg-white text-lightgray focus:text-slategray rounded-lg"
+                      onChange={updateCurrency}
+                    >
+                      {currencies.map((currency) => (
+                        <option key={currency.code} value={currency.code}>
+                          {currency.code}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
+                      <ChevronDownIcon
+                        className="h-4 w-4 text-gray-400"
+                        aria-hidden="true"
+                      />
                     </div>
-                  </fieldset>
-                ) : null}
+                  </div>
+                </fieldset>
               </form>
               <Link href="/cart">
                 <a>Cart</a>

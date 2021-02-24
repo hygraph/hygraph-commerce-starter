@@ -7,7 +7,7 @@ import Layout from '@/components/layout'
 
 function App({ Component, pageProps }) {
   return (
-    <CurrencyProvider {...pageProps}>
+    <CurrencyProvider>
       <CartProvider>
         <Layout {...pageProps}>
           <Component {...pageProps} />

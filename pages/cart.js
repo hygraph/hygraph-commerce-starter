@@ -25,8 +25,6 @@ function Cart() {
     <div>
       <button onClick={emptyCart}>Empty</button>
       {items.map((item) => {
-        const itemTotal = item.quantity * item.price
-
         return (
           <div className="flex items-center" key={item.id}>
             <div className="w-1/6">
@@ -57,7 +55,7 @@ function Cart() {
             <div>
               <button onClick={() => removeItem(item.id)}>Remove</button>
             </div>
-            <div>{itemTotal}</div>
+            <div>{item.itemTotal}</div>
           </div>
         )
       })}

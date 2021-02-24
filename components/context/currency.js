@@ -26,7 +26,7 @@ export const useCurrencyContext = () => {
   const context = React.useContext(CurrencyContext)
 
   if (!context)
-    throw new Error('useCurrencyContext must be used within an AuthProvider')
+    throw new Error('useCurrencyContext must be used within a CurrencyProvider')
 
   return context
 }

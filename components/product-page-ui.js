@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useCart } from 'react-use-cart'
 
 import { ChevronDownIcon } from '@/icons'
-import { formatPriceInt } from '@/utils/format-price-int'
+import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { useSettingsContext } from '@/context/settings'
 
 function ProductPageUI({ product }) {
@@ -75,7 +75,10 @@ function ProductPageUI({ product }) {
         </h1>
         <div className="mb-6">
           <p className="font-semibold text-2xl text-slategray">
-            {formatPriceInt({ currency: activeCurrency, price: product.price })}
+            {formatCurrencyValue({
+              currency: activeCurrency,
+              value: product.price
+            })}
           </p>
         </div>
         <div className="mb-6">

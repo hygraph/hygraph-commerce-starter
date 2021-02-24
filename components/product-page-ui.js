@@ -48,7 +48,7 @@ function ProductPageUI({ product }) {
       {
         id: activeVariantId,
         image: product.images[0],
-        price: activeVariant.price,
+        price: product.price,
         ...itemMetadata
       },
       variantQuantity

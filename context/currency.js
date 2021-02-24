@@ -1,22 +1,49 @@
 import * as React from 'react'
 
+import { currencies } from 'graphcms.config'
+import useLocalStorage from '@/hooks/use-local-storage'
+
 const CurrencyContext = React.createContext()
 
-function CurrencyProvider({ children, navigation }) {
-  const defaultCurrency = navigation?.currencies?.find((currency) =>
-    Boolean(currency.default)
-  )
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SWITCH_CURRENCY':
+      return { ...state, activeCurrency: action.payload }
+    default:
+      throw new Error('No action specified')
+  }
+}
 
-  const [activeCurrency, setActiveCurrency] = React.useState(defaultCurrency)
+function CurrencyProvider({ children }) {
+  const [savedCurrency, saveCurrency] = useLocalStorage(
+    'graphcms-commerce-reference',
+    {
+      activeCurrency: currencies.find((currency) => Boolean(currency.default))
+    }
+  )
+  const [state, dispatch] = React.useReducer(reducer, savedCurrency)
+  const [hasMounted, setHasMounted] = React.useState(false)
+
+  const switchCurrency = (currency) =>
+    dispatch({ type: 'SWITCH_CURRENCY', payload: currency })
 
   React.useEffect(() => {
-    setActiveCurrency(defaultCurrency)
-  }, [navigation])
+    saveCurrency(state)
+  }, [state, saveCurrency])
 
-  const switchCurrency = (currency) => setActiveCurrency(currency)
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  if (!hasMounted) return null
 
   return (
-    <CurrencyContext.Provider value={{ activeCurrency, switchCurrency }}>
+    <CurrencyContext.Provider
+      value={{
+        ...state,
+        switchCurrency
+      }}
+    >
       {children}
     </CurrencyContext.Provider>
   )

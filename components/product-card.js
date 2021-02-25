@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { formatPriceInt } from '@/utils/format-price-int'
+import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { useSettingsContext } from '@/context/settings'
 
 function ProductCard({ id, images, name, price, slug }) {
@@ -29,9 +29,9 @@ function ProductCard({ id, images, name, price, slug }) {
                 {name}
               </p>
               <p className="text-gray-400 text-sm">
-                {formatPriceInt({
+                {formatCurrencyValue({
                   currency: activeCurrency,
-                  price
+                  value: price
                 })}
               </p>
             </div>

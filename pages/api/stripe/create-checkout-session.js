@@ -46,8 +46,12 @@ export default async (req, res) => {
 
     const line_items = await Promise.all(
       items.map(async (item) => ({
-        quantity: item.quantity,
-        price_data: await getProduct(item.productId)
+        adjustable_quantity: {
+          enabled: true,
+          minimum: 1
+        },
+        price_data: await getProduct(item.productId),
+        quantity: item.quantity
       }))
     )
 

@@ -28,25 +28,42 @@ function Cart() {
     updateItemQuantity(item.id, item.quantity + 1)
 
   const handleClick = async () => {
-    const stripe = await stripePromise
+    try {
+      const stripe = await stripePromise
 
-    const { session } = await fetch('/api/stripe/create-checkout-session', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        cancel_url: window.location.origin,
-        currency: activeCurrency.code,
-        items,
-        locale: router.locale,
-        success_url: window.location.origin
+      const res = await fetch('/api/stripe/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          cancel_url: window.location.origin,
+          currency: activeCurrency.code,
+          items,
+          locale: router.locale,
+          success_url: window.location.origin
+        })
       })
-    }).then((res) => res.json())
 
-    await stripe.redirectToCheckout({
-      sessionId: session.id
-    })
+      if (!res.ok) {
+        const error = new Error(
+          'An error occurred while performing this request'
+        )
+
+        error.info = await res.json()
+        error.status = res.status
+
+        throw error
+      }
+
+      const { session } = await res.json()
+
+      await stripe.redirectToCheckout({
+        sessionId: session.id
+      })
+    } catch (error) {
+      console.log(error.info)
+    }
   }
 
   return (

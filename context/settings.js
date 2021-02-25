@@ -10,7 +10,7 @@ function reducer(state, action) {
     case 'SWITCH_CURRENCY':
       return { ...state, activeCurrency: action.payload }
     default:
-      throw new Error('No action specified')
+      throw new Error(`Unhandled action type: ${action.type}`)
   }
 }
 

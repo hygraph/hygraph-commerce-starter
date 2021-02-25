@@ -7,6 +7,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import getNavigation from '@/lib/get-navigation'
 import { useSettingsContext } from '@/context/settings'
+import useSubmissionState from 'hooks/use-form-submission'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
@@ -20,6 +21,13 @@ function Cart() {
   } = useCart()
   const router = useRouter()
   const { activeCurrency } = useSettingsContext()
+  const {
+    setSubmissionError,
+    setSubmissionLoading,
+    submissionError,
+    submissionLoading,
+    submissionState
+  } = useSubmissionState()
 
   const decrementItemQuantity = (item) =>
     updateItemQuantity(item.id, item.quantity - 1)
@@ -29,6 +37,8 @@ function Cart() {
 
   const handleClick = async () => {
     try {
+      setSubmissionLoading()
+
       const stripe = await stripePromise
 
       const res = await fetch('/api/stripe/create-checkout-session', {
@@ -61,14 +71,19 @@ function Cart() {
       await stripe.redirectToCheckout({
         sessionId: session.id
       })
+
+      setSubmissionSuccess()
     } catch (error) {
-      console.log(error.info)
+      setSubmissionError(error.info.message)
     }
   }
 
   return (
     <div>
-      <button onClick={emptyCart}>Empty</button>
+      {submissionError && submissionState.message}
+      <button onClick={emptyCart} disabled={submissionLoading}>
+        Empty
+      </button>
       {items.map((item) => {
         return (
           <div className="flex items-center" key={item.id}>
@@ -86,19 +101,30 @@ function Cart() {
             </div>
             <div className="flex items-center space-x-2">
               <div>
-                <button onClick={() => decrementItemQuantity(item)}>
+                <button
+                  onClick={() => decrementItemQuantity(item)}
+                  disabled={submissionLoading}
+                >
                   &#8210;
                 </button>
               </div>
               <span>{item.quantity}</span>
               <div>
-                <button onClick={() => incrementItemQuantity(item)}>
+                <button
+                  onClick={() => incrementItemQuantity(item)}
+                  disabled={submissionLoading}
+                >
                   &#43;
                 </button>
               </div>
             </div>
             <div>
-              <button onClick={() => removeItem(item.id)}>Remove</button>
+              <button
+                onClick={() => removeItem(item.id)}
+                disabled={submissionLoading}
+              >
+                Remove
+              </button>
             </div>
             <div>
               {formatCurrencyValue({
@@ -115,7 +141,9 @@ function Cart() {
           value: cartTotal
         })}
       </p>
-      <button onClick={handleClick}>Checkout</button>
+      <button onClick={handleClick} disabled={submissionLoading}>
+        Checkout
+      </button>
     </div>
   )
 }

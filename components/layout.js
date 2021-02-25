@@ -2,12 +2,15 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { ChevronDownIcon } from '@/icons'
+import { ChevronDownIcon, ShoppingCartIcon } from '@/icons'
+import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { GraphCMSSVG } from '@/svgs'
 import { currencies, locales } from 'graphcms.config'
+import { useCart } from 'react-use-cart'
 import { useSettingsContext } from '@/context/settings'
 
 function Layout({ children, navigation }) {
+  const { cartTotal } = useCart()
   const { activeCurrency, switchCurrency } = useSettingsContext()
   const router = useRouter()
 
@@ -109,7 +112,18 @@ function Layout({ children, navigation }) {
                 </fieldset>
               </form>
               <Link href="/cart">
-                <a>Cart</a>
+                <a className="flex space-x-2">
+                  <ShoppingCartIcon
+                    className="h-6 w-6 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <span className="text-gray-900">
+                    {formatCurrencyValue({
+                      currency: activeCurrency,
+                      value: cartTotal
+                    })}
+                  </span>
+                </a>
               </Link>
             </div>
           </nav>

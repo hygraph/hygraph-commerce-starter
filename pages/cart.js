@@ -6,7 +6,7 @@ import { useCart } from 'react-use-cart'
 import { loadStripe } from '@stripe/stripe-js'
 
 import {
-  ChevronDownIcon,
+  ChevronDownSmallIcon,
   ChevronUpSmallIcon,
   XSmallIcon
 } from '@/components/icons'
@@ -132,7 +132,7 @@ function Cart() {
                 onClick={() => decrementItemQuantity(item)}
                 disabled={submissionLoading}
               >
-                <ChevronDownIcon className="h-4 w-4" />
+                <ChevronDownSmallIcon className="h-4 w-4" />
               </button>
             </div>
             <div className="text-right md:w-1/5">

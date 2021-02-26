@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { ChevronDownIcon, ShoppingCartIcon } from '@/icons'
+import { ChevronDownSmallIcon, ShoppingCartIcon } from '@/icons'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { GraphCMSSVG } from '@/svgs'
 import { currencies, locales } from 'graphcms.config'
@@ -77,7 +77,7 @@ function Layout({ children, navigation }) {
                       ))}
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                      <ChevronDownIcon
+                      <ChevronDownSmallIcon
                         className="h-4 w-4 text-gray-400"
                         aria-hidden="true"
                       />
@@ -103,7 +103,7 @@ function Layout({ children, navigation }) {
                       ))}
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                      <ChevronDownIcon
+                      <ChevronDownSmallIcon
                         className="h-4 w-4 text-gray-400"
                         aria-hidden="true"
                       />

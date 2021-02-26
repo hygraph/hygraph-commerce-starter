@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useCart } from 'react-use-cart'
 
-import { ChevronDownIcon } from '@/icons'
+import { ChevronDownSmallIcon } from '@/icons'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { useSettingsContext } from '@/context/settings'
 
@@ -108,7 +108,7 @@ function ProductPageUI({ product }) {
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                  <ChevronDownIcon
+                  <ChevronDownSmallIcon
                     className="h-4 w-4 text-gray-400"
                     aria-hidden="true"
                   />
@@ -142,7 +142,7 @@ function ProductPageUI({ product }) {
                 })}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                <ChevronDownIcon
+                <ChevronDownSmallIcon
                   className="h-4 w-4 text-gray-400"
                   aria-hidden="true"
                 />

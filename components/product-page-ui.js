@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useCart } from 'react-use-cart'
 
+import Button from '@/ui/button'
 import { ChevronDownSmallIcon } from '@/icons'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { useSettingsContext } from '@/context/settings'
@@ -149,8 +150,8 @@ function ProductPageUI({ product }) {
               </div>
             </div>
           </div>
-          <button onClick={addToCart}>Add to cart</button>
         </div>
+        <Button onClick={addToCart}>Add to cart</Button>
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useCart } from 'react-use-cart'
 import { loadStripe } from '@stripe/stripe-js'
 
+import Button from '@/components/ui/button'
 import {
   ChevronDownSmallIcon,
   ChevronUpSmallIcon,
@@ -166,13 +167,9 @@ function Cart() {
               })}
             </span>
           </div>
-          <button
-            className="bg-indigo-600 hover:bg-gray-700 px-4 py-3 rounded-lg text-white text-sm font-bold tracking-widest uppercase focus:outline-none"
-            onClick={handleClick}
-            disabled={submissionLoading}
-          >
+          <Button onClick={handleClick} disabled={submissionLoading}>
             Checkout
-          </button>
+          </Button>
         </div>
       </div>
     </React.Fragment>

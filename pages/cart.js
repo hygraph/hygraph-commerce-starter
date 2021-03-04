@@ -13,6 +13,7 @@ import {
 } from '@/components/icons'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import getNavigation from '@/lib/get-navigation'
+import SEO from '@/components/seo'
 import { useSettingsContext } from '@/context/settings'
 import useSubmissionState from 'hooks/use-form-submission'
 
@@ -89,6 +90,7 @@ function Cart() {
 
   return (
     <React.Fragment>
+      <SEO title="Cart" />
       {items.map((item) => {
         return (
           <div

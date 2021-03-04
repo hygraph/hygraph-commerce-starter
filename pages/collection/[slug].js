@@ -1,10 +1,18 @@
+import * as React from 'react'
+
 import getAllCollections from '@/lib/get-all-collections'
 import getCollectionBySlug from '@/lib/get-collection-slug'
 import getNavigation from '@/lib/get-navigation'
 import ProductGrid from '@/components/product-grid'
+import SEO from '@/components/seo'
 
 function CollectionPage({ collection }) {
-  return <ProductGrid products={collection.products} />
+  return (
+    <React.Fragment>
+      <SEO title={collection.name} {...collection} />
+      <ProductGrid products={collection.products} />
+    </React.Fragment>
+  )
 }
 
 export async function getStaticPaths({ locales }) {

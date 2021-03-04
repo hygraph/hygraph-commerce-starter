@@ -1,5 +1,5 @@
 const description =
-  'Learn how to build with commerce experiences, with localization and SEO, using GraphCMS, NextJS, Tailwind, Stripe and Vercel.'
+  'Learn how to build modern, SEO ready commerce storefronts with GraphCMS, Next.js, Stripe, and Vercel.'
 const title = 'Build Modern Commerce Experiences with a Headless CMS'
 const url = 'https://commerce.withheadlesscms.com'
 

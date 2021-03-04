@@ -1,10 +1,18 @@
+import * as React from 'react'
+
 import getAllProducts from '@/lib/get-all-products'
 import getProductBySlug from '@/lib/get-product-slug'
 import getNavigation from '@/lib/get-navigation'
 import ProductPageUI from '@/components/product-page-ui'
+import SEO from '@/components/seo'
 
 function ProductPage({ product }) {
-  return <ProductPageUI product={product} />
+  return (
+    <React.Fragment>
+      <SEO title={product.name} {...product} />
+      <ProductPageUI product={product} />
+    </React.Fragment>
+  )
 }
 
 export async function getStaticPaths({ locales }) {

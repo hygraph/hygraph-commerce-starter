@@ -1,10 +1,18 @@
+import * as React from 'react'
+
 import getAllCategories from '@/lib/get-all-categories'
 import getCategoryBySlug from '@/lib/get-category-slug'
 import getNavigation from '@/lib/get-navigation'
 import ProductGrid from '@/components/product-grid'
+import SEO from '@/components/seo'
 
 function CategoryPage({ category }) {
-  return <ProductGrid products={category.products} />
+  return (
+    <React.Fragment>
+      <SEO title={category.name} {...category} />
+      <ProductGrid products={category.products} />
+    </React.Fragment>
+  )
 }
 
 export async function getStaticPaths({ locales }) {

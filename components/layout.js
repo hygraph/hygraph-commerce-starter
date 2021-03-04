@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { DefaultSeo } from 'next-seo'
 
 import { ChevronDownSmallIcon, ShoppingCartIcon } from '@/icons'
+import { defaultSeo } from 'next-seo.config'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { GraphCMSSVG } from '@/svgs'
 import { currencies, locales } from 'graphcms.config'
@@ -32,6 +34,7 @@ function Layout({ children, navigation }) {
 
   return (
     <React.Fragment>
+      <DefaultSeo {...defaultSeo} />
       <header className="max-w-7xl mx-auto bg-white flex-grow flex items-center justify-between px-4 sm:px-6">
         <div className="py-6 w-full">
           <nav className="flex items-center justify-between flex-wrap space-x-4">

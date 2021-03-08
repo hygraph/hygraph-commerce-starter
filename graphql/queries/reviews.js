@@ -10,7 +10,9 @@ const ProductReviewsQuery = gql`
         node {
           id
           content
+          createdAt
           email
+          headline
           name
           rating
         }

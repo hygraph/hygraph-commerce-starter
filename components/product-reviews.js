@@ -8,22 +8,24 @@ function ProductReviews({ id }) {
   const [isExpanded, setIsExpanded] = React.useState(false)
 
   const { data, error } = useSWR(
-    isExpanded ? [ProductReviewsQuery, id] : null,
+    [ProductReviewsQuery, id],
     (query, productId) => graphcmsClient.request(query, { productId })
   )
 
   const toggleExpanded = () => setIsExpanded((expanded) => !expanded)
+
   return (
     <div>
-      <button onClick={toggleExpanded}>Reviews</button>
+      <button onClick={toggleExpanded}>
+        Reviews ({data?.reviews.aggregate.count || 0})
+      </button>
       <div>
-        {isExpanded ? (
-          data ? (
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+        {isExpanded &&
+          (data ? (
+            <pre>{JSON.stringify(data.reviews.edges, null, 2)}</pre>
           ) : (
             'loading'
-          )
-        ) : null}
+          ))}
       </div>
     </div>
   )

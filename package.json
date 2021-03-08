@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.13.0",
+    "classcat": "^5.0.3",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "next": "^10.0.0",

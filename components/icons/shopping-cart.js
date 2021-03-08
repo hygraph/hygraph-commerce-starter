@@ -1,4 +1,4 @@
-function ChevronDown(props) {
+function ShoppingCart(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ function ChevronDown(props) {
   )
 }
 
-export default ChevronDown
+export default ShoppingCart

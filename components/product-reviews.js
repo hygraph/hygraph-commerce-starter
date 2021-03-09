@@ -3,8 +3,9 @@ import useSWR from 'swr'
 import cc from 'classcat'
 
 import { ChevronDownSmallIcon } from '@/icons'
-import { ProductReviewsQuery } from '@/graphql/queries/reviews'
 import graphcmsClient from '@/lib/graphcms-client'
+import { ProductReviewsQuery } from '@/graphql/queries/reviews'
+import ProductReviewForm from '@/components/product-review-form'
 
 function ProductReviews({ product }) {
   const [isExpanded, setIsExpanded] = React.useState(false)
@@ -18,7 +19,7 @@ function ProductReviews({ product }) {
 
   return (
     <div className="pt-6">
-      <div className="border-b pb-4">
+      <div className="border-b-2 pb-4">
         <button
           className="text-lg text-left w-full flex justify-between items-start text-gray-400"
           onClick={toggleExpanded}
@@ -41,13 +42,13 @@ function ProductReviews({ product }) {
         </button>
       </div>
       {isExpanded && (
-        <div>
+        <div className="pt-4">
           {!data ? (
             'loading'
-          ) : data.reviews.edges.length ? (
-            <div className="divide-y space-y-4">
+          ) : data.reviews.aggregate.count ? (
+            <div className="divide-y-2 space-y-4">
               {data.reviews.edges.map(({ node: review }) => (
-                <div key={review.id} className="pt-4 space-y-4">
+                <div key={review.id} className="first:pt-0 pt-4 space-y-4">
                   <div>
                     <p className="text-lg leading-6 font-medium text-gray-900">
                       {review.headline}
@@ -64,7 +65,7 @@ function ProductReviews({ product }) {
               ))}
             </div>
           ) : (
-            'empty'
+            <ProductReviewForm product={product} />
           )}
         </div>
       )}

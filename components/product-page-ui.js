@@ -6,6 +6,7 @@ import { useCart } from 'react-use-cart'
 import Button from '@/ui/button'
 import { ChevronDownSmallIcon } from '@/icons'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
+import ProductReviews from '@/components/product-reviews'
 import { useSettingsContext } from '@/context/settings'
 
 function ProductPageUI({ product }) {
@@ -152,6 +153,8 @@ function ProductPageUI({ product }) {
           </div>
         </div>
         <Button onClick={addToCart}>Add to cart</Button>
+
+        <ProductReviews product={product} />
       </div>
     </div>
   )

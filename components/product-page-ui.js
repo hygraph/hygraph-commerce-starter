@@ -154,7 +154,7 @@ function ProductPageUI({ product }) {
         </div>
         <Button onClick={addToCart}>Add to cart</Button>
 
-        <ProductReviews {...product} />
+        <ProductReviews product={product} />
       </div>
     </div>
   )

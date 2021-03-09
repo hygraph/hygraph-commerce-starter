@@ -6,11 +6,11 @@ import { ChevronDownSmallIcon } from '@/icons'
 import { ProductReviewsQuery } from '@/graphql/queries/reviews'
 import graphcmsClient from '@/lib/graphcms-client'
 
-function ProductReviews({ id }) {
+function ProductReviews({ product }) {
   const [isExpanded, setIsExpanded] = React.useState(false)
 
   const { data, error } = useSWR(
-    [ProductReviewsQuery, id],
+    [ProductReviewsQuery, product.id],
     (query, productId) => graphcmsClient.request(query, { productId })
   )
 

@@ -8,7 +8,7 @@ import { ProductReviewsQuery } from '@/graphql/queries/reviews'
 import ProductReviewForm from '@/components/product-review-form'
 
 function ProductReviews({ product }) {
-  const [isExpanded, setIsExpanded] = React.useState(false)
+  const [isExpanded, setIsExpanded] = React.useState(true)
 
   const { data, error } = useSWR(
     [ProductReviewsQuery, product.id],

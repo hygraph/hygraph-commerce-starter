@@ -37,7 +37,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ locale, params }) {
-  const { navigation } = await getNavigation({ locale })
+  const navigation = await getNavigation({ locale })
   const { product } = await getProductBySlug({
     locale,
     slug: params.slug
@@ -46,7 +46,7 @@ export async function getStaticProps({ locale, params }) {
   return {
     props: {
       product,
-      navigation
+      ...navigation
     }
   }
 }

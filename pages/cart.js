@@ -179,11 +179,11 @@ function Cart() {
 }
 
 export async function getStaticProps({ locale }) {
-  const { navigation } = await getNavigation({ locale })
+  const navigation = await getNavigation({ locale })
 
   return {
     props: {
-      navigation
+      ...navigation
     }
   }
 }

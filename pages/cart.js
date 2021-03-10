@@ -12,7 +12,7 @@ import {
   XSmallIcon
 } from '@/components/icons'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
-import getNavigation from '@/lib/get-navigation'
+import getPageData from '@/lib/get-page-data'
 import SEO from '@/components/seo'
 import { useSettingsContext } from '@/context/settings'
 import useSubmissionState from 'hooks/use-form-submission'
@@ -179,11 +179,11 @@ function Cart() {
 }
 
 export async function getStaticProps({ locale }) {
-  const navigation = await getNavigation({ locale })
+  const pageData = await getPageData({ locale })
 
   return {
     props: {
-      ...navigation
+      ...pageData
     }
   }
 }

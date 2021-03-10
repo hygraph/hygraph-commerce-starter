@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import getAllCategories from '@/lib/get-all-categories'
 import getCategoryBySlug from '@/lib/get-category-slug'
-import getNavigation from '@/lib/get-navigation'
+import getPageData from '@/lib/get-page-data'
 import ProductGrid from '@/components/product-grid'
 import SEO from '@/components/seo'
 
@@ -37,7 +37,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ locale, params }) {
-  const { navigation } = await getNavigation({ locale })
+  const pageData = await getPageData({ locale })
   const { category } = await getCategoryBySlug({
     locale,
     slug: params.slug
@@ -46,7 +46,7 @@ export async function getStaticProps({ locale, params }) {
   return {
     props: {
       category,
-      navigation
+      ...pageData
     }
   }
 }

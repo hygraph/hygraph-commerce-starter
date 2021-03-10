@@ -1,5 +1,5 @@
 import getAllProducts from '@/lib/get-all-products'
-import getNavigation from '@/lib/get-navigation'
+import getPageData from '@/lib/get-page-data'
 import ProductGrid from '@/components/product-grid'
 
 function IndexPage({ products }) {
@@ -7,11 +7,11 @@ function IndexPage({ products }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const { navigation } = await getNavigation({ locale })
+  const pageData = await getPageData({ locale })
   const { products } = await getAllProducts({ locale })
 
   return {
-    props: { navigation, products }
+    props: { ...pageData, products }
   }
 }
 

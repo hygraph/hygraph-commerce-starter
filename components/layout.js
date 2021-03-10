@@ -4,12 +4,13 @@ import { DefaultSeo } from 'next-seo'
 
 import { ShoppingCartIcon } from '@/icons'
 import { defaultSeo } from 'next-seo.config'
+import Footer from '@/components/footer'
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import { GraphCMSSVG } from '@/svgs'
 import { useCart } from 'react-use-cart'
 import { useSettingsContext } from '@/context/settings'
 
-function Layout({ children, navigation }) {
+function Layout({ children, footer, navigation }) {
   const { cartTotal } = useCart()
   const { activeCurrency } = useSettingsContext()
 
@@ -60,6 +61,7 @@ function Layout({ children, navigation }) {
         </div>
       </header>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">{children}</div>
+      <Footer {...footer} />
     </React.Fragment>
   )
 }

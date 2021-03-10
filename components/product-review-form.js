@@ -3,11 +3,12 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { ProductReviewsQuery } from '@/graphql/queries/reviews'
 import Button from '@/ui/button'
+import Form from '@/ui/form'
+import { ProductReviewsQuery } from '@/graphql/queries/reviews'
 
 function ProductReviewForm({ product }) {
-  const { errors, handleSubmit, register } = useForm({
+  const { handleSubmit, ...formMethods } = useForm({
     resolver: yupResolver(
       yup.object().shape({
         content: yup.string().required(),
@@ -52,69 +53,19 @@ function ProductReviewForm({ product }) {
   }
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label
-          className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"
-          htmlFor="headline"
-        >
-          Headline
-        </label>
-        <input
-          className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
-          id="headline"
-          name="headline"
-          ref={register}
-        />
+    <Form
+      className="space-y-4"
+      methods={formMethods}
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Form.Input field="headline" />
+      <div className="grid gap-4 md:grid-cols-2">
+        <Form.Input field="name" />
+        <Form.Input field="email" />
       </div>
-      <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <label
-            className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
-            id="name"
-            name="name"
-            ref={register}
-          />
-        </div>
-        <div>
-          <label
-            className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
-            id="email"
-            name="email"
-            type="email"
-            ref={register}
-          />
-        </div>
-      </div>
-      <div>
-        <label
-          className="block text-sm font-bold tracking-widest uppercase mb-2 text-slategray"
-          htmlFor="content"
-        >
-          Review
-        </label>
-        <textarea
-          className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
-          rows={4}
-          id="content"
-          name="content"
-          ref={register}
-        />
-      </div>
+      <Form.Textarea field="content" />
       <Button type="submit">Submit</Button>
-    </form>
+    </Form>
   )
 }
 

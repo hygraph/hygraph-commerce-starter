@@ -15,7 +15,8 @@ This project is an example of how to build fully-functioning Next.js commerce st
 - Dynamic client-side data fetching via [SWR](https://swr.vercel.app).
 - Localized shopping cart with [`react-use-cart`](https://github.com/notrab/react-use-cart).
 - Hosted checkout and payment flow with [Stripe Checkout](https://stripe.com/docs/payments/checkout).
-- Use the [GraphCMS mutation API](https://graphcms.com/mutation-api) with [API Routes](https://nextjs.org/docs/api-routes/introduction) to create orders on successful checkout.
+- Use the [GraphCMS mutation API](https://graphcms.com/mutation-api) with [API Routes](https://nextjs.org/docs/api-routes/introduction) to create orders on successful checkout (via webhook).
+- Multiple currency support.
 
 ## Usage
 
@@ -31,7 +32,7 @@ yarn
 
 2. Create a new GraphCMS project using the `Commerce Starter` template.
 
-3. Add a `.env` file by cloning the provided `.env.sample` and providing the required variable values.
+3. Add a `.env` file by cloning `.env.sample` and providing the required variable values.
 
 > It is recommended you create separate GraphCMS [auth tokens](https://graphcms.com/docs/authorization#permanent-auth-tokens) to handle querying and mutating data.
 
@@ -43,6 +44,35 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 STRIPE_SECRET_KEY=
 ```
 
-4. Configure [`graphcms.config.js`](graphcms.config.js) to reflect your project. Learn more [here](#configuration).
+4. Configure support for more locales or currencies in [`graphcms.config.js`](graphcms.config.js). Learn more [here](#configuration).
 
-## Configure
+## Configuration
+
+Project configuration for supported locales and currencies is managed in [`graphcms.config.js`](graphcms.config.js).
+
+> It is important that the `locales` array reflects the enabled locales in your GraphCMS project.
+
+```js
+module.exports = {
+  locales: [
+    {
+      value: 'en',
+      label: 'English',
+      default: true
+    },
+    {
+      value: 'de',
+      label: 'German'
+    }
+  ],
+  currencies: [
+    {
+      code: 'GBP',
+      default: true
+    },
+    {
+      code: 'EUR'
+    }
+  ]
+}
+```

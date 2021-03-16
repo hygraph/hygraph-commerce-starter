@@ -59,7 +59,7 @@ function Cart() {
           currency: activeCurrency.code,
           items,
           locale: router.locale,
-          success_url: window.location.origin
+          success_url: `${window.location.origin}/success`
         })
       })
 

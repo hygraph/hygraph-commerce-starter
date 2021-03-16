@@ -5,7 +5,7 @@ import graphcmsClient, { gql } from '@/lib/graphcms-client'
 export default async (req, res) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
   try {
-    const { currency, items, locale, ...rest } = req.body
+    const { currency, items, locale, success_url, ...rest } = req.body
 
     const getProduct = async (id) => {
       const {
@@ -60,6 +60,7 @@ export default async (req, res) => {
       line_items,
       locale,
       payment_method_types: ['card'],
+      success_url: `${success_url}?id={CHECKOUT_SESSION_ID}`,
       ...rest
     })
 

@@ -9,7 +9,7 @@ export default async (req, res) => {
 
     const getProduct = async (id) => {
       const {
-        product: { description, images, name, ...product }
+        product: { description, images, name, price, ...product }
       } = await graphcmsClient.request(
         gql`
           query ProductQuery($id: ID!, $locale: Locale!) {
@@ -40,7 +40,7 @@ export default async (req, res) => {
           name,
           images: images.map((img) => img.url)
         },
-        unit_amount: product.price
+        unit_amount: price
       }
     }
 

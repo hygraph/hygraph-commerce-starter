@@ -14,14 +14,12 @@ export default async (req, res) => {
             throw new Error(`Unhandled event: ${req.body.type}`)
         }
       } catch (error) {
-        console.log(error)
-        res.status(500).json({ status: 500, message: 'Unknown event' })
+        res.status(500).json({ message: 'Unknown event' })
       }
     }
 
-    res.status(204).json({ status: 204, message: 'Received' })
+    res.status(204).json({ message: 'Received' })
   } else {
-    res.setHeader('Allow', 'POST')
-    res.status(405).end('Method Not Allowed')
+    res.status(405).json({ message: 'Method not allowed' })
   }
 }

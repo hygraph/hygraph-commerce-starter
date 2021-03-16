@@ -44,7 +44,9 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 STRIPE_SECRET_KEY=
 ```
 
-4. Configure support for more locales or currencies in [`graphcms.config.js`](graphcms.config.js). Learn more [here](#configuration).
+4. Setup a [Stripe webhook](https://stripe.com/docs/payments/handling-payment-events) for the `checkout.session.completed` event to order to enable GraphCMS fulfilment via the mutation API.
+
+5. Configure support for more locales or currencies in [`graphcms.config.js`](graphcms.config.js) if required. Learn more [here](#configuration).
 
 ## Configuration
 

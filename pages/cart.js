@@ -55,11 +55,11 @@ function Cart() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          cancel_url: window.location.origin,
+          cancel_url: window.location.href,
           currency: activeCurrency.code,
           items,
           locale: router.locale,
-          success_url: window.location.origin
+          success_url: `${window.location.origin}/success`
         })
       })
 

@@ -1,9 +1,7 @@
-import Stripe from 'stripe'
-
 import graphcmsClient, { gql } from '@/lib/graphcms-client'
+import stripe from '@/lib/stripe-client'
 
 export default async (req, res) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
   try {
     const { currency, items, locale, success_url, ...rest } = req.body
 

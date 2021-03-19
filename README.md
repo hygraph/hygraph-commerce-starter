@@ -6,7 +6,7 @@
 
 ## About
 
-This project is an example of how to build fully-functioning Next.js commerce storefront with GraphCMS and Stripe.
+This project is an example of how to build fully-functioning Next.js commerce storefront with GraphCMS and Stripe. View the demo on [https://commerce.withheadlesscms.com/](https://commerce.withheadlesscms.com/).
 
 ## Features
 

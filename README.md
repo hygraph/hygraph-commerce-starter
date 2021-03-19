@@ -1,5 +1,5 @@
 <h2 align="center">
-  reference-commerce
+  graphcms-commerce-starter
 </h2>
 
 <p align="center">Build modern, SEO ready commerce storefronts with GraphCMS, Next.js, Stripe and Tailwind CSS</p>
@@ -25,8 +25,8 @@ This project is an example of how to build fully-functioning Next.js commerce st
 1. Clone with repository with [`degit`](https://github.com/Rich-Harris/degit) and install project dependencies.
 
 ```bash
-npx degit GraphCMS/reference-commerce#main reference-commerce
-cd reference-commerce
+npx degit GraphCMS/graphcms-commerce-starter#main graphcms-commerce-starter
+cd graphcms-commerce-starter
 yarn
 ```
 
@@ -47,6 +47,8 @@ STRIPE_SECRET_KEY=
 4. Setup a [Stripe webhook](https://stripe.com/docs/payments/handling-payment-events) for the `checkout.session.completed` event to order to enable GraphCMS fulfilment via the mutation API.
 
 5. Configure support for more locales or currencies in [`graphcms.config.js`](graphcms.config.js) if required. Learn more [here](#configuration).
+
+6. Run `yarn dev`
 
 ## Configuration
 

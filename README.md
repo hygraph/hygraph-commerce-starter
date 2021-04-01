@@ -22,7 +22,7 @@ This project is an example of how to build fully-functioning Next.js commerce st
 
 > This reference application requires a Stripe account
 
-1. Clone with repository with [`degit`](https://github.com/Rich-Harris/degit) and install project dependencies.
+1. Clone the repository with [`degit`](https://github.com/Rich-Harris/degit) and install project dependencies.
 
 ```bash
 npx degit GraphCMS/graphcms-commerce-starter#main graphcms-commerce-starter

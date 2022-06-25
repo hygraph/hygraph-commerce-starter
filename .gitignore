@@ -3,6 +3,7 @@
 
 # Environment variables
 .env.local
+.env
 
 # Dependency directories
 node_modules
@@ -14,3 +15,6 @@ yarn-error.log*
 
 # Misc
 .vercel
+
+# IDE
+.idea

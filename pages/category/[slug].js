@@ -13,6 +13,7 @@ import Image from 'next/image'
 
 function CategoryPage({ category }) {
   const settings = {
+    autoplay: true,
     dots: true,
     infinite: true,
     speed: 500,

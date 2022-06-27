@@ -10,6 +10,7 @@ import Image from 'next/image'
 
 function CollectionPage({ collection }) {
   const settings = {
+    autoplay: true,
     dots: true,
     infinite: true,
     speed: 500,

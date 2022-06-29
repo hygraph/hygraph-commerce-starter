@@ -1,4 +1,4 @@
-function GraphCMS(props) {
+function Hygraph(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,4 +15,4 @@ function GraphCMS(props) {
   )
 }
 
-export default GraphCMS
+export default Hygraph

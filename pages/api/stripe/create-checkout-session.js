@@ -1,4 +1,4 @@
-import graphcmsClient, { gql } from '@/lib/graphcms-client'
+import hygraphClient, { gql } from '@/lib/hygraph-client'
 import stripe from '@/lib/stripe-client'
 
 export default async (req, res) => {
@@ -8,7 +8,7 @@ export default async (req, res) => {
     const getProduct = async (id) => {
       const {
         product: { description, images, name, price, ...product }
-      } = await graphcmsClient.request(
+      } = await hygraphClient.request(
         gql`
           query ProductQuery($id: ID!, $locale: Locale!) {
             product(where: { id: $id }, locales: [$locale]) {

@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import cc from 'classcat'
 
 import { ChevronDownSmallIcon } from '@/icons'
-import graphcmsClient from '@/lib/graphcms-client'
+import hygraphClient from '@/lib/hygraph-client'
 import { ProductReviewsQuery } from '@/graphql/queries/reviews'
 import ProductReviewForm from '@/components/product-review-form'
 
@@ -12,7 +12,7 @@ function ProductReviews({ product }) {
 
   const { data, error } = useSWR(
     [ProductReviewsQuery, product.id],
-    (query, productId) => graphcmsClient.request(query, { productId })
+    (query, productId) => hygraphClient.request(query, { productId })
   )
 
   const toggleExpanded = () => setIsExpanded((expanded) => !expanded)

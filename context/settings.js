@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { currencies } from 'graphcms.config'
+import { currencies } from 'hygraph.config'
 import useLocalStorage from '@/hooks/use-local-storage'
 
 const SettingsContext = React.createContext()
@@ -16,7 +16,7 @@ function reducer(state, action) {
 
 function SettingsProvider({ children }) {
   const [savedSettings, saveSettings] = useLocalStorage(
-    'graphcms-commerce-reference',
+    'hygraph-commerce-reference',
     {
       activeCurrency: currencies.find((currency) => Boolean(currency.default))
     }

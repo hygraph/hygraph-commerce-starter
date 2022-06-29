@@ -1,1 +1,1 @@
-export { default as GraphCMSSVG } from './graphcms'
+export { default as HygraphSVG } from './hygraph'

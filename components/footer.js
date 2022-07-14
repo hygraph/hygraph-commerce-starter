@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { GitHubIcon, TwitterIcon } from '@/icons'
 import { Select } from '@/ui/form'
-import { currencies, locales } from 'graphcms.config'
+import { currencies, locales } from 'hygraph.config'
 import { useSettingsContext } from '@/context/settings'
 
 function Footer({ categories = [], collections = [] }) {
@@ -112,13 +112,13 @@ function Footer({ categories = [], collections = [] }) {
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
-            <Link href="https://twitter.com/graphcms">
+            <Link href="https://twitter.com/hygraphcom">
               <a className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">Twitter</span>
                 <TwitterIcon className="h-6 w-6" aria-hidden="true" />
               </a>
             </Link>
-            <Link href="https://github.com/GraphCMS">
+            <Link href="https://github.com/Hygraph">
               <a className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">GitHub</span>
                 <GitHubIcon className="h-6 w-6" aria-hidden="true" />

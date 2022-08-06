@@ -25,7 +25,7 @@ function ProductReviewForm({ product }) {
       async ({ reviews: { aggregate, edges } }) => {
         try {
           const { review } = await fetch(
-            '/api/graphcms/create-product-review',
+            '/api/hygraph/create-product-review',
             {
               method: 'POST',
               headers: {

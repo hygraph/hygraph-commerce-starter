@@ -1,8 +1,8 @@
-import graphcmsMutationClient, { gql } from '@/lib/graphcms-mutation-client'
+import hygraphMutationClient, { gql } from '@/lib/hygraph-mutation-client'
 
 export default async (req, res) => {
   try {
-    const { review } = await graphcmsMutationClient.request(
+    const { review } = await hygraphMutationClient.request(
       gql`
         mutation CreateProductReview($review: ReviewCreateInput!) {
           review: createReview(data: $review) {
@@ -13,7 +13,7 @@ export default async (req, res) => {
       { review: req.body }
     )
 
-    const { publishedReview } = await graphcmsMutationClient.request(
+    const { publishedReview } = await hygraphMutationClient.request(
       gql`
         mutation PublishProductReview($id: ID!) {
           publishedReview: publishReview(where: { id: $id }) {

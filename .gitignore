@@ -15,3 +15,5 @@ yarn-error.log*
 
 # Misc
 .vercel
+
+.idea

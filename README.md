@@ -43,6 +43,7 @@ HYGRAPH_QUERY_TOKEN=
 HYGRAPH_ENDPOINT=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SIGNING_SECRET=
 ```
 
 4. Setup a [Stripe webhook](https://stripe.com/docs/payments/handling-payment-events) for the `checkout.session.completed` event to order to enable Hygraph fulfilment via the mutation API.

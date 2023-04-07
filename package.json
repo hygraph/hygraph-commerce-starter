@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.0.1",
-    "@netlify/plugin-nextjs": "^4.33.0",
     "@stripe/stripe-js": "^1.13.0",
     "classcat": "^5.0.3",
     "graphql": "^15.5.0",

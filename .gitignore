@@ -17,5 +17,3 @@ yarn-error.log*
 .vercel
 
 .idea
-# Local Netlify folder
-.netlify

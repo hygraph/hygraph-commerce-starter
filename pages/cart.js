@@ -106,10 +106,8 @@ function Cart() {
                 />
               </div>
               <div>
-                <Link href={`/products/${item[router.locale].slug}`}>
-                  <a className="text-gray-800 font-medium text-sm md:text-base">
-                    {item[router.locale].name}
-                  </a>
+                <Link href={`/products/${item[router.locale].slug}`} className="text-gray-800 font-medium text-sm md:text-base">
+                  {item[router.locale].name}
                 </Link>
                 <button
                   className="text-gray-400 hover:text-indigo-600 text-xs flex items-center focus:outline-none"

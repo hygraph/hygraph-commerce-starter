@@ -15,3 +15,7 @@ yarn-error.log*
 
 # Misc
 .vercel
+
+.idea
+# Local Netlify folder
+.netlify

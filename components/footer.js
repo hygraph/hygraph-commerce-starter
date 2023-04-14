@@ -49,10 +49,9 @@ function Footer({ categories = [], collections = [] }) {
                           href={`/${category.type.toLowerCase()}/${
                             category.slug
                           }`}
+                          className="text-base text-gray-500 hover:text-gray-900"
                         >
-                          <a className="text-base text-gray-500 hover:text-gray-900">
                             {category.name}
-                          </a>
                         </Link>
                       </li>
                     ))}
@@ -71,10 +70,9 @@ function Footer({ categories = [], collections = [] }) {
                           href={`/${collection.type.toLowerCase()}/${
                             collection.slug
                           }`}
+                          className="text-base text-gray-500 hover:text-gray-900"
                         >
-                          <a className="text-base text-gray-500 hover:text-gray-900">
-                            {collection.name}
-                          </a>
+                          {collection.name}
                         </Link>
                       </li>
                     ))}
@@ -112,17 +110,13 @@ function Footer({ categories = [], collections = [] }) {
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
-            <Link href="https://twitter.com/hygraphcom">
-              <a className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Twitter</span>
-                <TwitterIcon className="h-6 w-6" aria-hidden="true" />
-              </a>
+            <Link href="https://twitter.com/hygraphcom" className="text-gray-400 hover:text-gray-500">
+              <span className="sr-only">Twitter</span>
+              <TwitterIcon className="h-6 w-6" aria-hidden="true" />
             </Link>
-            <Link href="https://github.com/Hygraph">
-              <a className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">GitHub</span>
-                <GitHubIcon className="h-6 w-6" aria-hidden="true" />
-              </a>
+            <Link href="https://github.com/Hygraph" className="text-gray-400 hover:text-gray-500">
+              <span className="sr-only">GitHub</span>
+              <GitHubIcon className="h-6 w-6" aria-hidden="true" />
             </Link>
           </div>
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">

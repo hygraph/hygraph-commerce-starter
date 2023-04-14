@@ -28,7 +28,7 @@ This project is an example of how to build fully-functioning Next.js commerce st
 ```bash
 npx degit Hygraph/hygraph-commerce-starter#main hygraph-commerce-starter
 cd hygraph-commerce-starter
-yarn
+npm install
 ```
 
 2. Create a new Hygraph project using the `Commerce Starter` template.
@@ -50,7 +50,7 @@ STRIPE_WEBHOOK_SIGNING_SECRET=
 
 5. Configure support for more locales or currencies in [`hygraph.config.js`](hygraph.config.js) if required. Learn more [here](#configuration).
 
-6. Run `yarn dev`
+6. Run `npm run dev`
 
 ## Configuration
 

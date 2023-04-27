@@ -22,7 +22,6 @@ function SettingsProvider({ children }) {
     }
   )
   const [state, dispatch] = React.useReducer(reducer, savedSettings)
-  const [hasMounted, setHasMounted] = React.useState(false)
 
   const switchCurrency = (currency) =>
     dispatch({ type: 'SWITCH_CURRENCY', payload: currency })
@@ -30,12 +29,6 @@ function SettingsProvider({ children }) {
   React.useEffect(() => {
     saveSettings(state)
   }, [state, saveSettings])
-
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
-
-  if (!hasMounted) return null
 
   return (
     <SettingsContext.Provider
